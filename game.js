@@ -7,7 +7,8 @@ let computer_score_display = document.querySelector("#computerScore");
 human_score_display.textContent = human_score;
 computer_score_display.textContent = computer_score;
 
-
+let match_results_display = document.querySelector("#matchResults");
+let round_result_display = document.querySelector("#roundResult");
 
 function playGame () {
     // Get the human's choice
@@ -28,11 +29,8 @@ function playGame () {
                 human_selection = "scissors";
                 break;
         }
-        console.log(human_selection);
-
             // Get computer's choice
         let computer_selection = getComputerChoice();
-        console.log(computer_selection);
 
             // Compare human's choice with computer's choice, declare outcome
             // and modify scores
@@ -42,13 +40,13 @@ function playGame () {
                 // Play to 5 points
         if ((human_score == 5) || (computer_score == 5)) {
             if (human_score == computer_score) {
-                console.log("The game was a tie")
+                match_results_display.textContent = "The game was a tie"
             }
             else if (human_score > computer_score) {
-                console.log("You won the match!")
+                match_results_display.textContent = "You won the match!";
             }
             else {
-                console.log("You lost the match...")
+                match_results_display.textContent = "You lost the match...";
             }
         }
     });
@@ -74,16 +72,16 @@ function playRound(humanChoice, computerChoice) {
     // Compare human's choice with computer's choice, declare outcome
     // and modify scores
     if (humanChoice == computerChoice) {
-        console.log("tie!");
+        round_result_display.textContent = "tie!";
     }
     else if (
     ((humanChoice == "rock") && (computerChoice == "scissors"))
     || ((humanChoice == "paper") && (computerChoice == "rock"))
     || ((humanChoice == "scissors") && (computerChoice == "paper"))) {
-        console.log("You win! " + humanChoice + " beats " + computerChoice);
+        round_result_display.textContent = "You win! " + humanChoice + " beats " + computerChoice;
         human_score += 1;
     } else {
-        console.log("You lose! " + computerChoice + " beats " + humanChoice);
+        round_result_display.textContent = "You lose! " + computerChoice + " beats " + humanChoice;
         computer_score += 1;
     }
     human_score_display.textContent = human_score;
