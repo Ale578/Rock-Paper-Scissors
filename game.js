@@ -1,13 +1,20 @@
-let human_score, computer_score = 0;
+let human_score = 0;
+let computer_score = 0;
+
+let human_score_display = document.querySelector("#humanScore");
+let computer_score_display = document.querySelector("#computerScore");
+
+human_score_display.textContent = human_score;
+computer_score_display.textContent = computer_score;
+
+
 
 function playGame () {
-    // Play to 5 points
-
     // Get the human's choice
     let human_selection;
-    let options = document.querySelector('#options');
+    let options = document.querySelector("#options");
 
-    options.addEventListener('click', (event) => {
+    options.addEventListener("click", (event) => {
         let target = event.target;
 
         switch(target.id) {
@@ -32,6 +39,7 @@ function playGame () {
         playRound(human_selection, computer_selection);
 
             // Declare match winner
+                // Play to 5 points
         if ((human_score == 5) || (computer_score == 5)) {
             if (human_score == computer_score) {
                 console.log("The game was a tie")
@@ -78,6 +86,9 @@ function playRound(humanChoice, computerChoice) {
         console.log("You lose! " + computerChoice + " beats " + humanChoice);
         computer_score += 1;
     }
+    human_score_display.textContent = human_score;
+    computer_score_display.textContent = computer_score;
+
 }
 
 playGame();
