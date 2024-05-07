@@ -3,10 +3,7 @@ let human_score, computer_score = 0;
 function playGame () {
     // Play to 5 points
 
-        // Play round
-
-            // Get the human's choice
-
+    // Get the human's choice
     let human_selection;
     let options = document.querySelector('#options');
 
@@ -34,17 +31,19 @@ function playGame () {
             // and modify scores
         playRound(human_selection, computer_selection);
 
+            // Declare match winner
+        if ((human_score == 5) || (computer_score == 5)) {
+            if (human_score == computer_score) {
+                console.log("The game was a tie")
+            }
+            else if (human_score > computer_score) {
+                console.log("You won the match!")
+            }
+            else {
+                console.log("You lost the match...")
+            }
+        }
     });
-    // Declare match winner
-    if (human_score == computer_score) {
-        console.log("The game was a tie")
-    }
-    else if (human_score > computer_score) {
-        console.log("You won the match!")
-    }
-    else {
-        console.log("You lost the match...")
-    }
 }
 
 function getComputerChoice() {
